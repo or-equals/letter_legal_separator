@@ -8,18 +8,12 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
 
-    respond_to do |format|
-      if @upload.save
-        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
-        format.json { render :show, status: :created, location: @upload }
-      else
-        format.html { render :new }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
-      end
+    if @upload.save
+      flash[:notice] = "Upload was successfully created."
+      send_data @upload.pdf_file.download, filename: @upload.pdf_file.filename.to_s, content_type: @upload.pdf_file.content_type
+    else
+      render 'pages/index'
     end
-  end
-
-  def show
   end
 
   private
