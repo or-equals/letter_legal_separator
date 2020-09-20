@@ -1,0 +1,28 @@
+<%= form_with(model: upload, local: true, multipart: true) do |form| %>
+  <% if upload.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+      <ul>
+        <% upload.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-6">
+    <%= form.label :pdf_file, class: "label" %>
+    <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+    <%= form.file_field :pdf_file, direct_upload: true, data: { target: 'dropzone.input' } %>
+    <div class="dropzone-msg dz-message needsclick text-gray-600">
+      <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+      <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <%= form.submit  class: "btn-default btn" %>
+  </div>
+<% end %>
