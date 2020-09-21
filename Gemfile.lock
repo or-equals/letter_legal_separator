@@ -73,6 +73,8 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     coderay (1.1.3)
+    combine_pdf (1.0.18)
+      ruby-rc4 (>= 0.1.5)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
     erubi (1.9.0)
@@ -158,6 +160,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.1)
+    ruby-rc4 (0.1.5)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -218,12 +221,14 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  combine_pdf
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)
   raygun4ruby
+  rubyzip
   sass-rails (>= 6)
   selenium-webdriver
   spring
