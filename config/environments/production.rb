@@ -57,7 +57,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter     = :sucker_punch
   # config.active_job.queue_name_prefix = "letter_legal_separator_production"
 
   config.action_mailer.perform_caching = false
@@ -65,6 +65,11 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: '1fae2be47473bf3cbeacd9bf0a385f01-cb3791c4-dd5f177d',
+    domain: 'https://letter-legal-separator.herokuapp.com/',
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

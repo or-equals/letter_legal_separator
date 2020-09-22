@@ -8,6 +8,8 @@ class UploadsController < ApplicationController
 
       zipper = PdfZip.new(splitter)
       zipper.zip
+
+      AdminMailer.pdf_uploaded.deliver_later
       send_file zipper.zip_location, filename: zipper.zipfile_name, content_type: 'application/zip'
     else
       render 'pages/index'

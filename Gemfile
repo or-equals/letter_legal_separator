@@ -12,6 +12,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 gem 'raygun4ruby'
 gem 'rubyzip'
 gem 'sass-rails', '>= 6'
+gem 'sucker_punch'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
