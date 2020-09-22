@@ -65,10 +65,15 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  #
+  Mailgun.configure do |config|
+    config.api_key = '1fae2be47473bf3cbeacd9bf0a385f01-cb3791c4-dd5f177d'
+  end
+
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: '1fae2be47473bf3cbeacd9bf0a385f01-cb3791c4-dd5f177d',
-    domain: 'https://letter-legal-separator.herokuapp.com/',
+    domain: 'sandbox34146f5924ce4298b0e02f1209a63581.mailgun.org',
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
