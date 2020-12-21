@@ -17,7 +17,6 @@ class PdfZip
     end
   end
 
-
   def zipfile_name
     pdf_splitter.original_pdf.attachment.filename.base + '_split.zip'
   end
