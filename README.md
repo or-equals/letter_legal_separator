@@ -1,24 +1,6 @@
-# README
+# Letter Legal Page Separator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sort a PDF document containing mixed letter and legal pages into two separate piles - one for letter, one for legal.
 
-Things you may want to cover:
+Just drop your file in and click "Separate my PDF". We never keep your file.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
