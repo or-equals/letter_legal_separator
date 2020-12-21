@@ -3,7 +3,7 @@ class PdfSplitter
 
   def initialize(pdf_file)
     @original_pdf = pdf_file
-    @pdf_wrapper  = CombinePDF.parse(pdf_file.download)
+    @pdf_wrapper  = CombinePDF.parse(pdf_file.read)
     @letter_pdf   = CombinePDF.new
     @legal_pdf    = CombinePDF.new
   end
@@ -37,7 +37,7 @@ class PdfSplitter
   end
 
   def rendered_filename(name_extension)
-    original_pdf.attachment.filename.base + name_extension + original_pdf.attachment.filename.extension_with_delimiter
+    File.basename(original_pdf.original_filename, '.pdf') + name_extension + '.pdf'
   end
 
   private

@@ -1,6 +1,5 @@
 class UploadsController < ApplicationController
   def create
-    upload.save!
     pdf_splitter.split
     pdf_zipper.zip
     AdminMailer.pdf_uploaded.deliver_later
@@ -9,12 +8,12 @@ class UploadsController < ApplicationController
 
   private
 
-  def upload
-    @upload ||= Upload.new(upload_params)
+  def uploaded_pdf
+    upload_params['pdf_file']
   end
 
   def pdf_splitter
-    @pdf_splitter ||= PdfSplitter.new(upload.pdf_file)
+    @pdf_splitter ||= PdfSplitter.new(uploaded_pdf)
   end
 
   def pdf_zipper
