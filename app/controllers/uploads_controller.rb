@@ -2,18 +2,14 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
 
-    if @upload.valid?
-      splitter = PdfSplitter.new(@upload.pdf_file)
-      splitter.split
+    splitter = PdfSplitter.new(@upload.pdf_file)
+    splitter.split
 
-      zipper = PdfZip.new(splitter)
-      zipper.zip
+    zipper = PdfZip.new(splitter)
+    zipper.zip
 
-      AdminMailer.pdf_uploaded.deliver_later
-      send_file zipper.zip_location, filename: zipper.zipfile_name, content_type: 'application/zip'
-    else
-      render 'pages/index'
-    end
+    AdminMailer.pdf_uploaded.deliver_later
+    send_file zipper.zip_location, filename: zipper.zipfile_name, content_type: 'application/zip'
   end
 
   private
