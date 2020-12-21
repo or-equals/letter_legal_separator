@@ -1,5 +1,10 @@
 class UploadsController < ApplicationController
   def create
+    # The test suite passes with this line, but I don't want to
+    # save anything in the live version. Uncomment for testing, but never
+    # commit it
+    #
+    # upload.save!
     pdf_splitter.split
     pdf_zipper.zip
     send_file pdf_zipper.zip_location, filename: pdf_zipper.zipfile_name, content_type: 'application/zip'
@@ -7,12 +12,12 @@ class UploadsController < ApplicationController
 
   private
 
-  def uploaded_pdf
-    upload_params['pdf_file']
+  def upload
+    @upload ||= Upload.new(upload_params)
   end
 
   def pdf_splitter
-    @pdf_splitter ||= PdfSplitter.new(uploaded_pdf)
+    @pdf_splitter ||= PdfSplitter.new(upload.pdf_file)
   end
 
   def pdf_zipper
