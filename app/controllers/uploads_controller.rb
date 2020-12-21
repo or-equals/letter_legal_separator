@@ -2,7 +2,6 @@ class UploadsController < ApplicationController
   def create
     pdf_splitter.split
     pdf_zipper.zip
-    AdminMailer.pdf_uploaded.deliver_later
     send_file pdf_zipper.zip_location, filename: pdf_zipper.zipfile_name, content_type: 'application/zip'
   end
 
