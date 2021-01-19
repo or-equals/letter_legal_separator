@@ -21,7 +21,8 @@ RSpec.describe StackingGuide, type: :model do
   describe '#print' do
     it 'pretty prints' do
       guide = described_class.new([:legal, :letter, :legal, :letter])
-      expect { guide.print }.to output(<<-OUTPUT
+      guide.print
+      expect(File.read('stacking_guide.txt')).to eq(<<-OUTPUT
 +----------+---------+---------+
 | Page     | Letter  | Legal   |
 +----------+---------+---------+
@@ -31,7 +32,7 @@ RSpec.describe StackingGuide, type: :model do
 | 4        |    X    |         |
 +----------+---------+---------+
 OUTPUT
-).to_stdout
+)
     end
   end
 end

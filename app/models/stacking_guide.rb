@@ -10,21 +10,23 @@ class StackingGuide
   end
 
   def print
-    puts "+----------+---------+---------+"
-    puts "| Page     | Letter  | Legal   |"
-    puts "+----------+---------+---------+"
-    print_dynamic_lines
-    puts "+----------+---------+---------+"
+    File.open("stacking_guide.txt", "w") do |f|
+      f.write "+----------+---------+---------+\n"
+      f.write "| Page     | Letter  | Legal   |\n"
+      f.write "+----------+---------+---------+\n"
+      print_dynamic_lines(f)
+      f.write "+----------+---------+---------+\n"
+    end
   end
 
   private
 
-  def print_dynamic_lines
+  def print_dynamic_lines(file)
     pages.map.with_index do |type, index|
       if type == :letter
-        puts "| #{index + 1}        |    X    |         |"
+        file.write "| #{index + 1}        |    X    |         |\n"
       else
-        puts "| #{index + 1}        |         |    X    |"
+        file.write "| #{index + 1}        |         |    X    |\n"
       end
     end
   end

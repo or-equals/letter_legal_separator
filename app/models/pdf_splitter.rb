@@ -1,18 +1,21 @@
 class PdfSplitter
-  attr_reader :letter_pdf, :legal_pdf, :original_pdf, :pdf_wrapper
+  attr_reader :letter_pdf, :legal_pdf, :original_pdf, :pdf_wrapper, :stacking_guide
 
   def initialize(pdf_file)
-    @original_pdf = pdf_file
-    @pdf_wrapper  = CombinePDF.parse(pdf_file.download)
-    @letter_pdf   = CombinePDF.new
-    @legal_pdf    = CombinePDF.new
+    @original_pdf   = pdf_file
+    @pdf_wrapper    = CombinePDF.parse(pdf_file.download)
+    @letter_pdf     = CombinePDF.new
+    @legal_pdf      = CombinePDF.new
+    @stacking_guide = StackingGuide.new
   end
 
   def split
     pdf_wrapper.pages.each do |page|
       if legal_page?(page)
+        stacking_guide.add(:legal)
         legal_pdf << page
       else
+        stacking_guide.add(:letter)
         letter_pdf << page
       end
     end

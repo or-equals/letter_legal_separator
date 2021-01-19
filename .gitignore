@@ -37,4 +37,5 @@ yarn-debug.log*
 coverage
 letter_legal_mix_legal_split.pdf
 letter_legal_mix_letter_split.pdf
+stacking_guide.txt
 ./letter_legal_mix_letter_split.pdf
