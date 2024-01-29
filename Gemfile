@@ -6,18 +6,18 @@ ruby `cat .ruby-version`
 gem 'bootsnap', require: false
 gem 'combine_pdf'
 gem 'image_processing'
-gem 'mailgun-ruby', '~>1.1.6'
+gem 'mailgun-ruby', '~> 1.1.6'
 gem 'pg'
 gem 'pry-rails'
 gem 'puma'
-gem 'rails', '6.1.7'
+gem 'rails', '~> 7.1.3'
 gem 'raygun4ruby'
 gem 'rexml'
 gem 'rubyzip'
 gem 'sass-rails'
 gem 'sucker_punch'
 gem 'turbolinks'
-gem 'webpacker', '~> 4.0'
+gem 'shakapacker', '6.5.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
